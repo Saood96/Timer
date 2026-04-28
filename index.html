@@ -5,89 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Episode Link</title>
     <style>
-        :root { 
-            --bg-dark: #0f172a; 
-            --card-bg: #1e293b; 
-            --primary-btn: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); 
-            --text-muted: #94a3b8; 
-        }
-        
-        body { 
-            margin: 0; 
-            background-color: var(--bg-dark); 
-            color: white; 
-            font-family: 'Segoe UI', sans-serif; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-        }
-
-        .card { 
-            background: var(--card-bg); 
-            padding: 50px 40px; 
-            border-radius: 30px; 
-            text-align: center; 
-            width: 350px; 
-            border: 1px solid #334155; 
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); 
-        }
-
+        :root { --bg-dark: #0f172a; --card-bg: #1e293b; --primary-btn: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); --text-muted: #94a3b8; }
+        body { margin: 0; background-color: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: var(--card-bg); padding: 50px 40px; border-radius: 30px; text-align: center; width: 350px; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
         h1 { font-size: 26px; margin: 0 0 10px 0; font-weight: 800; }
         p { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; }
-        
-        .timer-circle { 
-            width: 80px; 
-            height: 80px; 
-            border: 4px solid #334155; 
-            border-top-color: #6366f1; 
-            border-radius: 50%; 
-            margin: 0 auto 20px; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            font-size: 28px; 
-            font-weight: bold; 
-            color: #6366f1;
-            animation: spin 1s linear infinite; 
-        }
-        
-        /* Ghoomne wale circle ke andar text ko seedha rakhne ke liye */
-        .timer-circle span {
-            animation: reverse-spin 1s linear infinite;
-        }
-
+        .timer-circle { width: 80px; height: 80px; border: 4px solid #334155; border-top-color: #6366f1; border-radius: 50%; margin: 0 auto 20px; display: flex; justify-content: center; align-items: center; font-size: 28px; font-weight: bold; color: #6366f1; animation: spin 1s linear infinite; }
+        .timer-circle span { animation: reverse-spin 1s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @keyframes reverse-spin { 100% { transform: rotate(-360deg); } }
-
-        .btn { 
-            display: none; /* Pehle button chhupa rahega */
-            width: 100%; 
-            padding: 16px; 
-            border-radius: 15px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 18px; 
-            color: white; 
-            text-align: center; 
-            background: var(--primary-btn); 
-            box-sizing: border-box; 
-            transition: transform 0.2s;
-        }
-
+        .btn { display: none; width: 100%; padding: 16px; border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 18px; color: white; text-align: center; background: var(--primary-btn); box-sizing: border-box; transition: transform 0.2s; }
         .btn:hover { transform: scale(1.05); }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 13px;
-            color: #475569;
-            letter-spacing: 0.5px;
-        }
+        .footer { margin-top: 30px; font-size: 13px; color: #475569; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
-
     <div class="card">
         <div id="countdown-section">
             <h1>Preparing Link</h1>
@@ -98,17 +30,17 @@
             <p style="margin-bottom: 0;">Seconds remaining...</p>
         </div>
 
-   <a href="https://wearvibe.co.in/gateway/verify.php?key=WEARVIBE786" class="btn" id="action-btn">
-    Verify & Go to Episode 1 📺
-</a>
+        <a href="https://wearvibe.co.in/gateway/verify.php?key=WEARVIBE786" class="btn" id="action-btn">
+            Verify & Go to Episode 1 📺
+        </a>
     </div>
 
     <div class="footer">
-        Created By Saooduddin Khan
+        Powered By Saood Khan
     </div>
 
     <script>
-        let timeLeft = 20; // 20 second ka timer
+        let timeLeft = 20;
         const timerLabel = document.getElementById('timer-display');
         const countSec = document.getElementById('countdown-section');
         const actionBtn = document.getElementById('action-btn');
@@ -116,11 +48,10 @@
         const timer = setInterval(() => {
             timeLeft--;
             timerLabel.innerText = timeLeft;
-
             if (timeLeft <= 0) {
                 clearInterval(timer);
-                countSec.style.display = 'none'; // Timer chhupa do
-                actionBtn.style.display = 'block'; // Button dikha do
+                countSec.style.display = 'none';
+                actionBtn.style.display = 'block';
             }
         }, 1000);
     </script>
