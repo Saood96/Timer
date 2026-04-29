@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Episode Link</title>
+
     <style>
         :root { --bg-dark: #0f172a; --card-bg: #1e293b; --primary-btn: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); --text-muted: #94a3b8; }
         body { margin: 0; background-color: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; }
@@ -19,6 +20,7 @@
         .footer { margin-top: 30px; font-size: 13px; color: #475569; letter-spacing: 0.5px; }
     </style>
 </head>
+
 <body>
     <div class="card">
         <div id="countdown-section">
@@ -30,8 +32,9 @@
             <p style="margin-bottom: 0;">Seconds remaining...</p>
         </div>
 
-        <a href="https://saood.wearvibe.co.in/kurulus-orhan/season-1/episode-01/" class="btn" id="action-btn">
-            Verify & Go to Episode 1 📺
+        <!-- 🔥 BUTTON FIXED -->
+        <a href="#" class="btn" id="action-btn">
+            Verify & Continue 📺
         </a>
     </div>
 
@@ -45,15 +48,32 @@
         const countSec = document.getElementById('countdown-section');
         const actionBtn = document.getElementById('action-btn');
 
+        // 🔥 GET EPISODE ID FROM URL
+        const params = new URLSearchParams(window.location.search);
+        const episodeId = params.get("ep");
+
         const timer = setInterval(() => {
             timeLeft--;
             timerLabel.innerText = timeLeft;
+
             if (timeLeft <= 0) {
                 clearInterval(timer);
                 countSec.style.display = 'none';
                 actionBtn.style.display = 'block';
             }
         }, 1000);
+
+        // 🔥 BUTTON CLICK → SUCCESS PAGE
+        actionBtn.onclick = function() {
+
+            if (!episodeId) {
+                alert("Episode ID missing");
+                return;
+            }
+
+            window.location.href =
+                "https://saood.wearvibe.co.in/keyloginsuccess?ep=" + episodeId;
+        };
     </script>
 </body>
 </html>
